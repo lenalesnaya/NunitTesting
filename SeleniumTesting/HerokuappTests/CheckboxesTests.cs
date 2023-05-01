@@ -7,17 +7,16 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class CheckboxesTests<DriverType> : Tests
+    internal class CheckboxesTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         readonly string? url = TestContext.Parameters["CheckboxesUrl"];
         IList<IWebElement> checkboxes;
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
             checkboxes = driver!.FindElements(By.CssSelector("[type = checkbox]"));
         }
 

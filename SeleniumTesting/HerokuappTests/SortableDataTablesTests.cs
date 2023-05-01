@@ -7,16 +7,15 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class SortableDataTablesTests<DriverType> : Tests
+    internal class SortableDataTablesTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         readonly string? url = TestContext.Parameters["SortableDataTablesUrl"];
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
         }
 
         [Test]
@@ -47,7 +46,7 @@ namespace SeleniumTesting.HerokuappTests
             driver.Quit();
         }
 
-        private bool CheckCellValue(string cellLocatorString,  string cellValue)
+        private bool CheckCellValue(string cellLocatorString, string cellValue)
         {
             var cell = driver!.FindElement(By.XPath(cellLocatorString));
 

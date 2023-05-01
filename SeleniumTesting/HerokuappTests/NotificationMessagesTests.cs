@@ -9,10 +9,9 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class NotificationMessagesTests<DriverType> : Tests
+    internal class NotificationMessagesTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         WebDriverWait wait;
 
         readonly string? url = TestContext.Parameters["NotificationMessagesUrl"];
@@ -20,9 +19,9 @@ namespace SeleniumTesting.HerokuappTests
         readonly By flashLocator = By.Id("flash");
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 

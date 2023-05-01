@@ -10,10 +10,9 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class HoversTests<DriverType> : Tests
+    internal class HoversTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         WebDriverWait wait;
         Actions action;
 
@@ -24,9 +23,9 @@ namespace SeleniumTesting.HerokuappTests
         readonly string hrefLocatorStringTemplate = "//*[@href='{0}']";
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
             action = new Actions(driver);
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }

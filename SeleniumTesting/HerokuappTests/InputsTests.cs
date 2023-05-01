@@ -7,17 +7,16 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class InputsTests<DriverType> : Tests
+    internal class InputsTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         readonly string? url = TestContext.Parameters["InputsUrl"];
         IWebElement input;
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
             input = driver!.FindElement(By.TagName("input"));
         }
 

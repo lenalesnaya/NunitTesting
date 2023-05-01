@@ -7,17 +7,16 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class TyposTests<DriverType> : Tests
+    internal class TyposTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         readonly string? url = TestContext.Parameters["TyposUrl"];
         IList<IWebElement> paragraphs;
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
             paragraphs = driver!.FindElements(By.TagName("p"));
         }
 

@@ -8,17 +8,16 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    internal class DropdownTests<DriverType> : Tests
+    internal class DropdownTests<DriverType> : Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         readonly string? url = TestContext.Parameters["DropdownUrl"];
         SelectElement dropdown;
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
             dropdown = new SelectElement(driver!.FindElement(By.Id("dropdown")));
         }
 

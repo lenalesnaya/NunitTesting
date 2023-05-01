@@ -7,10 +7,9 @@ namespace SeleniumTesting.HerokuappTests
 {
     [TestFixture(typeof(FirefoxDriver))]
     [TestFixture(typeof(ChromeDriver))]
-    public class AddRemoveTests<DriverType>: Tests
+    public class AddRemoveTests<DriverType>: Tests<DriverType>
         where DriverType : IWebDriver, new()
     {
-        IWebDriver driver;
         readonly string? url = TestContext.Parameters["AddRemoveUrl"];
 
         const string buttonLocatorStringTemplate = "//button[text()='{0}']";
@@ -20,9 +19,9 @@ namespace SeleniumTesting.HerokuappTests
                 string.Format(buttonLocatorStringTemplate, "Delete"));
 
         [SetUp]
-        public void Setup()
+        public void LocalSetup()
         {
-            driver = ConfigureDriver(new DriverType(), url);
+            driver.Navigate().GoToUrl(url);
         }
 
         [Test]
