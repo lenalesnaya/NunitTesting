@@ -15,7 +15,7 @@ namespace SeleniumTesting.HerokuappTests
         WebDriverWait wait;
 
         readonly string? url = TestContext.Parameters["NotificationMessagesUrl"];
-        readonly By hrefLocator = By.XPath("//*[@href='/notification_message']");
+        readonly By hrefLocator = By.CssSelector("[href='/notification_message']");
         readonly By flashLocator = By.Id("flash");
 
         [SetUp]

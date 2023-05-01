@@ -20,14 +20,14 @@ namespace SeleniumTesting.HerokuappTests
         readonly By notFoundLocator = By.TagName("h1");
         readonly By imageLocator = By.ClassName("figure");
         readonly string nameLocatorStringTemplate = "//h5[text()='name: {0}']";
-        readonly string hrefLocatorStringTemplate = "//*[@href='{0}']";
+        readonly string hrefLocatorStringTemplate = "a[href='{0}']";
 
         [SetUp]
         public void LocalSetup()
         {
             driver.Navigate().GoToUrl(url);
             action = new Actions(driver);
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }
 
         [Test]
@@ -53,11 +53,11 @@ namespace SeleniumTesting.HerokuappTests
         private void CheckHover(IWebElement hover, string userName, string href)
         {
             By nameLocator = By.XPath(string.Format(nameLocatorStringTemplate, userName));
-            By hrefLocator = By.XPath(string.Format(hrefLocatorStringTemplate, href));
+            By hrefLocator = By.CssSelector(string.Format(hrefLocatorStringTemplate, href));
 
             action.MoveToElement(hover).
-                MoveToElement(driver!.FindElement(nameLocator)).
-                MoveToElement(driver!.FindElement(hrefLocator)).
+                MoveToElement(wait.Until(ExpectedConditions.ElementExists(nameLocator))).
+                MoveToElement(wait.Until(ExpectedConditions.ElementExists(hrefLocator))).
                 Click().Build().Perform();
         }
 
