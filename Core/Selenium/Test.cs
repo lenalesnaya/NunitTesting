@@ -1,11 +1,11 @@
-﻿using Core.Selenium;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace SharelaneAutomation.Tests.Abstractions
+namespace Core.Selenium
 {
-    internal abstract class Tests
+    public abstract class Test
     {
-        protected IWebDriver Driver { get; set; }
+        protected IWebDriver? Driver { get; set; }
 
         [SetUp]
         public void SetUp()

@@ -1,8 +1,9 @@
-﻿using SharelaneAutomation.Pages;
+﻿using Core.Selenium;
+using SharelaneAutomation.Pages;
 
 namespace SharelaneAutomation.Tests.Abstractions
 {
-    internal abstract class SharelaneTests : Tests
+    internal abstract class SharelaneTests : Test
     {
         protected MainPage MainPage { get; set; }
 

@@ -15,7 +15,7 @@ namespace SharelaneAutomation.Tests
             var zipCodePage = MainPage.ClickSignUpLink();
             Assert.Multiple(() =>
             {
-                Assert.That(Driver.Url, Is.EqualTo(ZipCodePage.Url));
+                Assert.That(Driver!.Url, Is.EqualTo(ZipCodePage.Url));
                 Assert.That(zipCodePage.CheckZipCodeInputPresented());
             });
         }
