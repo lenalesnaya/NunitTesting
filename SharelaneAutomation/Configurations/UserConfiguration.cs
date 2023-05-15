@@ -1,6 +1,6 @@
 ﻿using Core.Configurations.Abstractions;
 
-namespace Core.Configurations
+namespace SharelaneAutomation.Configurations
 {
     public class UserConfiguration : IConfiguration
     {

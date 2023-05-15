@@ -6,7 +6,6 @@ namespace Core.Configurations
     public class ConfigurationManager
     {
         public static BrowserConfiguration Browser => BindConfiguration<BrowserConfiguration>();
-        public static UserConfiguration User => BindConfiguration<UserConfiguration>();
         public static string CurrentDirectory => Directory.GetCurrentDirectory();
 
         public static string GetValue(string key)

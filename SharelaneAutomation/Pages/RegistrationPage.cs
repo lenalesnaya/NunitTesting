@@ -1,6 +1,6 @@
-﻿using Core.Models;
-using Core.Selenium;
+﻿using Core.Selenium;
 using OpenQA.Selenium;
+using SharelaneAutomation.Models;
 using SharelaneAutomation.Pages.Abstractions;
 
 namespace SharelaneAutomation.Pages

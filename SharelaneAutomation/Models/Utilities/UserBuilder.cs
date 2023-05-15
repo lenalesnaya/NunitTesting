@@ -1,8 +1,7 @@
 ﻿using Bogus;
-using Core.Models;
-using Core.Configurations;
+using SharelaneAutomation.Configurations;
 
-namespace Core.Utilities
+namespace SharelaneAutomation.Models.Utilities
 {
     public static class UserBuilder
     {
@@ -10,11 +9,11 @@ namespace Core.Utilities
 
         public static User StandartUser => new()
         {
-                FirstName = ConfigurationManager.User.FirstName,
-                LastName = ConfigurationManager.User.LastName,
-                Email = ConfigurationManager.User.Email,
-                Password = ConfigurationManager.User.Password,
-                ZipCode = ConfigurationManager.User.ZipCode
+            FirstName = SharelaneConfigurationManager.User.FirstName,
+            LastName = SharelaneConfigurationManager.User.LastName,
+            Email = SharelaneConfigurationManager.User.Email,
+            Password = SharelaneConfigurationManager.User.Password,
+            ZipCode = SharelaneConfigurationManager.User.ZipCode
         };
 
         public static User GetRandomUser() => new()

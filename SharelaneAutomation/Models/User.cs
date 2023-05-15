@@ -1,4 +1,4 @@
-﻿namespace Core.Models
+﻿namespace SharelaneAutomation.Models
 {
     public class User
     {

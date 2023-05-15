@@ -1,4 +1,4 @@
-﻿using Core.Utilities;
+﻿using SharelaneAutomation.Models.Utilities;
 using SharelaneAutomation.Pages;
 using SharelaneAutomation.Tests.Abstractions;
 

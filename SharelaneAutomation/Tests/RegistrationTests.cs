@@ -1,35 +1,14 @@
-﻿using Core.Models;
-using Core.Utilities;
+﻿using SharelaneAutomation.Models;
+using SharelaneAutomation.Models.Utilities;
 using SharelaneAutomation.Pages;
 using SharelaneAutomation.Tests.Abstractions;
+using SharelaneAutomation.Tests.TestValues;
 
 namespace SharelaneAutomation.Tests
 {
     [TestFixture]
     internal class RegistrationTests : SharelaneTests
     {
-        private const string firstAndLastNameMinLimitValue = "j";
-        private const string MaxLimitValue =
-            "ghjdfghsdfgbndfgbnsdvbndfgnmdfghjdfcvgbnmdfcvgbndfgvbhndfgvbhfvgbhghjdfghsd" +
-            "fgbndfgbnsdvbndfgnmdfghjdfcvgbnmdfcvgbndfgvbhndfgvbhfvgbhghjdfghsdfgbndfgb" +
-            "nsdvbndfgnmdfghjdfcvgbnmdfcvgbndfgvbhndfgvbhfvgbhghjdfghsdfgbndfgbnsdvbnd" +
-            "fgnmdfghjdfcvgbnmdfcvgbndfgvbhndLL";
-        private const string OverlimitValue =
-            "ghjdfghsdfgbndfgbnsdvbndfgnmdfghjdfcvgbnmdfcvgbndfgvbhndfgvbhfvgbhghjdfghsd" +
-            "fgbndfgbnsdvbndfgnmdfghjdfcvgbnmdfcvgbndfgvbhndfgvbhfvgbhghjdfghsdfgbndfgb" +
-            "nsdvbndfgnmdfghjdfcvgbnmdfcvgbndfgvbhndfgvbhfvgbhghjdfghsdfgbndfgbnsdvbnd" +
-            "fgnmdfghjdfcvgbnmdfcvgbndfgvbhndLLL";
-        private const string emailMaxLimitValue =
-            "lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123len" +
-            "ka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka" +
-            "_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_" +
-            "123lenka_123lenka_123lenka@mail.ru";
-        private const string emailOverlimitValue =
-            "lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123len" +
-            "ka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka" +
-            "_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_123lenka_" +
-            "123lenka_123lenka_123lenkaa@mail.ru";
-
         [Test, Category("Positive"), Description("Sign up link check.")]
         public void Register_ClickSignUpLink()
         {
@@ -59,6 +38,17 @@ namespace SharelaneAutomation.Tests
             });
         }
 
+        [Test, Category("Positive"), Description("Registration with random user credentials check.")]
+        public void Register_WithRandomUserCredentials()
+        {
+            var registrationConfirmationPage = Register(UserBuilder.GetRandomUser());
+            Assert.Multiple(() =>
+            {
+                Assert.That(registrationConfirmationPage.CheckConfirmationMessagePresented());
+                Assert.That(registrationConfirmationPage.CheckConfirmationMassageIsCorrect());
+            });
+        }
+
         [Test, Category("Positive"), Description
             ("Registration with valid credentials check (empty last name field)")]
         public void Register_WithValidCredentials_EmptyLastNameField()
@@ -78,8 +68,8 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("LimitValues"), Description("Registration with first name limit values check")]
-        [TestCase(firstAndLastNameMinLimitValue)]
-        [TestCase(MaxLimitValue)]
+        [TestCase(RegistrationValues.FirstAndLastNameMinLimitValue)]
+        [TestCase(RegistrationValues.FirstAndLastNameMaxLimitValue)]
         public void Register_WithFirstNameLimitValues(string firstName)
         {
             var user = UserBuilder.CreateUser(
@@ -97,8 +87,8 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("LimitValues"), Description("Registration with last name limit values check")]
-        [TestCase(firstAndLastNameMinLimitValue)]
-        [TestCase(MaxLimitValue)]
+        [TestCase(RegistrationValues.FirstAndLastNameMinLimitValue)]
+        [TestCase(RegistrationValues.FirstAndLastNameMaxLimitValue)]
         public void Register_WithLastNameLimitValues(string lastName)
         {
             var user = UserBuilder.CreateUser(
@@ -117,9 +107,9 @@ namespace SharelaneAutomation.Tests
 
         [Category("LimitAndOtherPositive"), Description
             ("Registration with email limit and positive variations values check")]
-        [TestCase(emailMaxLimitValue)]
-        [TestCase("123lenka@mail.ru")]
-        [TestCase("lenka@mail.ru")]
+        [TestCase(RegistrationValues.EmailMaxLimitValue)]
+        [TestCase(RegistrationValues.EmailAlphaNumericValue)]
+        [TestCase(RegistrationValues.EmailLowAlphabeticValue)]
         public void Register_WithEmailLimitAndOtherPositiveValues(string email)
         {
             var user = UserBuilder.CreateUser(
@@ -137,8 +127,8 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("LimitValues"), Description("Registration with password limit values check")]
-        [TestCase("10Mu")]
-        [TestCase(MaxLimitValue)]
+        [TestCase(RegistrationValues.PasswordMinLimitValue)]
+        [TestCase(RegistrationValues.PasswordMaxLimitValue)]
         public void Register_WithPasswordLimitValues(string password)
         {
             var user = UserBuilder.CreateUser(
@@ -156,10 +146,10 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("Negative"), Description("Incorrect zip code validation check.")]
-        [TestCase("1234")]
-        [TestCase("")]
-        [TestCase("123456")]
-        [TestCase("bb)0%")]
+        [TestCase(RegistrationValues.ZipCodeUnderlimitValue)]
+        [TestCase(RegistrationValues.EmptyStringValue)]
+        [TestCase(RegistrationValues.ZipCodeOverlimitValue)]
+        [TestCase(RegistrationValues.ZipCodeIncorrectSymbolsValue)]
         public void Register_ValidateIncorrectZipCode_CheckErrorMessage(string zipCode)
         {
             var zipCodePage = MainPage.ClickSignUpLink().TryToValidateZipCode(zipCode);
@@ -171,12 +161,12 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("Negative"), Description("Registration with invalid first name check")]
-        [TestCase("")]
-        [TestCase("Елена")]
-        [TestCase("Elena123")]
-        [TestCase("El ena")]
-        [TestCase("Elena!@#")]
-        [TestCase(OverlimitValue)]
+        [TestCase(RegistrationValues.EmptyStringValue)]
+        [TestCase(RegistrationValues.CyrillicValue)]
+        [TestCase(RegistrationValues.AlphaNumericValue)]
+        [TestCase(RegistrationValues.AlphabeticSpaceValue)]
+        [TestCase(RegistrationValues.AlphaSpecialSymbolsValue)]
+        [TestCase(RegistrationValues.FirstAndLastNameOverlimitValue)]
         public void Register_WithInvalidFirstName_CheckErrorMessage(string firstName)
         {
             var user = UserBuilder.CreateUser(
@@ -194,11 +184,11 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("Negative"), Description("Registration with invalid last name check")]
-        [TestCase("Лесная")]
-        [TestCase("Lesnaya123")]
-        [TestCase("Les naya")]
-        [TestCase("Lesnaya!@#")]
-        [TestCase(OverlimitValue)]
+        [TestCase(RegistrationValues.CyrillicValue)]
+        [TestCase(RegistrationValues.AlphaNumericValue)]
+        [TestCase(RegistrationValues.AlphabeticSpaceValue)]
+        [TestCase(RegistrationValues.AlphaSpecialSymbolsValue)]
+        [TestCase(RegistrationValues.FirstAndLastNameOverlimitValue)]
         public void Register_WithInvalidLastName_CheckErrorMessage(string lastName)
         {
             var user = UserBuilder.CreateUser(
@@ -231,15 +221,15 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("Negative"), Description("Registration with invalid email check")]
-        [TestCase("123ленка@mail.ru")]
-        [TestCase("123LenkA@mail.ru")]
-        [TestCase("123lenka@mailru")]
-        [TestCase("123lenkamail.ru")]
-        [TestCase("123lenka@@mail.ru")]
-        [TestCase("123lenka @mail.ru")]
-        [TestCase("@.")]
-        [TestCase("")]
-        [TestCase(emailOverlimitValue)]
+        [TestCase(RegistrationValues.EmailCyrillicValue)]
+        [TestCase(RegistrationValues.EmailUpAlphabeticValue)]
+        [TestCase(RegistrationValues.EmailWithoutDotValue)]
+        [TestCase(RegistrationValues.EmailWithoutDoggyValue)]
+        [TestCase(RegistrationValues.EmailWithTwoDoggyValue)]
+        [TestCase(RegistrationValues.EmailWithSpaceValue)]
+        [TestCase(RegistrationValues.EmailDoggyAndDotValue)]
+        [TestCase(RegistrationValues.EmptyStringValue)]
+        [TestCase(RegistrationValues.EmailOverlimitValue)]
         public void Register_WithInvalidEmail_CheckErrorMessage(string email)
         {
             var user = UserBuilder.CreateUser(
@@ -257,10 +247,10 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("Negative"), Description("Registration with invalid password check")]
-        [TestCase("")]
-        [TestCase("b1*")]
-        [TestCase("b1 *")]
-        [TestCase(OverlimitValue)]
+        [TestCase(RegistrationValues.EmptyStringValue)]
+        [TestCase(RegistrationValues.PasswordUnderLimitValue)]
+        [TestCase(RegistrationValues.PasswordWithSpaceValue)]
+        [TestCase(RegistrationValues.PasswordOverlimitValue)]
         public void Register_WithInvalidPassword_CheckErrorMessage(string password)
         {
             var user = UserBuilder.CreateUser(
@@ -278,9 +268,9 @@ namespace SharelaneAutomation.Tests
         }
 
         [Category("Negative"), Description("Registration with invalid password confirmation check")]
-        [TestCase("", "лес123oBlako&*")]
-        [TestCase("лес123oBlako&*", "")]
-        [TestCase("лес123oBlako&*", "123oBlako&*лес")]
+        [TestCase(RegistrationValues.EmptyStringValue, UserBuilder.StandartUser.Password)]
+        [TestCase(UserBuilder.StandartUser.Password, RegistrationValues.EmptyStringValue)]
+        [TestCase(UserBuilder.StandartUser.Password, UserBuilder.StandartUser.Password)]
         public void Register_WithInvalidPasswordConfirmation_CheckErrorMessage(
             string password,
             string confirmPassword)
