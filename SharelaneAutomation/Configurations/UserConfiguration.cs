@@ -2,7 +2,7 @@
 
 namespace SharelaneAutomation.Configurations
 {
-    public class UserConfiguration : IConfiguration
+    internal class UserConfiguration : IConfiguration
     {
         public string SectionName => "StandartUser";
         public string? FirstName { get; set; }

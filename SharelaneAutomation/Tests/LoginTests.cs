@@ -1,5 +1,4 @@
-﻿using SharelaneAutomation.Models.Utilities;
-using SharelaneAutomation.Pages;
+﻿using SharelaneAutomation.Pages;
 using SharelaneAutomation.Tests.Abstractions;
 
 namespace SharelaneAutomation.Tests
@@ -10,7 +9,7 @@ namespace SharelaneAutomation.Tests
         [Test, Category("Positive"), Description("Login with valid credentials check.")]
         public void Login_WithValidCredentials()
         {
-            var mainPage = Login();
+            var mainPage = LoginSteps.Login();
             Assert.Multiple(() =>
             {
                 Assert.That(mainPage.CheckHelloUserPresented);
@@ -21,7 +20,7 @@ namespace SharelaneAutomation.Tests
         [Test, Category("Positive"), Description("Logout check.")]
         public void Logout()
         {
-            var mainPage = Login();
+            var mainPage = LoginSteps.Login();
             var logoutPage = mainPage.ClickLogoutLink();
 
             Assert.Multiple(() =>
@@ -47,32 +46,13 @@ namespace SharelaneAutomation.Tests
         [Test, Category("Negative"), Description("Login with invalid password check")]
         public void Login_WithInvalidPassword_CheckErrorMessage()
         {
-            var registrationConfirmationPage = Register();
-            var email = registrationConfirmationPage.GetEmailString();
-            var mainPage = registrationConfirmationPage.ClickMainPageLink().Login(email, "");
+            LoginSteps.TryToLogin(wrongPassword: "");
 
             Assert.Multiple(() =>
             {
-                Assert.That(mainPage.CheckErrorMassagePresented());
-                Assert.That(mainPage.CheckErrorMassageIsCorrect());
+                Assert.That(MainPage.CheckErrorMassagePresented());
+                Assert.That(MainPage.CheckErrorMassageIsCorrect());
             });
-        }
-
-        private MainPage Login()
-        {
-            var registrationConfirmationPage = Register();
-            var email = registrationConfirmationPage.GetEmailString();
-            var password = registrationConfirmationPage.GetPasswordString();
-
-            return registrationConfirmationPage.ClickMainPageLink().Login(email, password);
-        }
-
-        private RegistrationConfirmationPage Register()
-        {
-            return MainPage.
-                ClickSignUpLink().
-                ValidateZipCode(UserBuilder.StandartUser.ZipCode!).
-                Register(UserBuilder.StandartUser);
         }
     }
 }

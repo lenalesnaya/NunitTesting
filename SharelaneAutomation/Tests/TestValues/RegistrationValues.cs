@@ -36,5 +36,6 @@ namespace SharelaneAutomation.Tests.TestValues
         internal static readonly string PasswordUnderLimitValue = FakerHelper.GetAlphaNumericSpecialSymbolsStringRandomValue(3);
         internal static readonly string PasswordWithSpaceValue =
             FakerHelper.GetAlphaNumericSpecialSymbolsStringRandomValue(3) + " " + FakerHelper.GetAlphaNumericSpecialSymbolsStringRandomValue(3);
+        internal static readonly string PasswordConfirmationRandomValue = FakerHelper.GetAlphaNumericStringRandomValue(4, 256);
     }
 }

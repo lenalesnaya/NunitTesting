@@ -14,7 +14,12 @@ namespace Core.Utilities
 
         public static string GetNumericStringRandomValue(int length)
         {
-            return Convert.ToString(faker.Random.Digits(length, 0, 9))!;
+            return faker.Random.String(length, '0', '9');
+        }
+        public static string GetAlphaNumericStringRandomValue(int minLength, int maxLength)
+        {
+            var random = new Random();
+            return faker.Random.AlphaNumeric(random.Next(minLength, maxLength));
         }
 
         public static string GetAlphaNumericStringRandomValue(int length)

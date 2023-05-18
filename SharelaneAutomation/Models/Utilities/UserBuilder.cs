@@ -22,21 +22,23 @@ namespace SharelaneAutomation.Models.Utilities
             LastName = faker.Name.LastName(),
             Email = faker.Internet.Email(provider: "AT_TMSQAC01_TEST.automation"),
             Password = faker.Internet.Password(10),
-            ZipCode = Convert.ToString(faker.Random.Digits(5, 0, 9))
+            ZipCode = faker.Random.String(5, '0', '9')
         };
 
         public static User CreateUser(
             string firstName,
             string lastName,
             string email,
-            string password)
+            string password,
+            string? zipCode = null)
         {
             return new User()
             {
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                Password = password
+                Password = password,
+                ZipCode = zipCode
             };
         }
     }

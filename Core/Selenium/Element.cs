@@ -4,7 +4,6 @@ namespace Core.Selenium
 {
     public class Element
     {
-        protected static Browser Browser => Browser.Instance;
         protected By Locator { get; }
 
         public Element(By locator)
@@ -19,7 +18,17 @@ namespace Core.Selenium
 
         public void Click()
         {
-            Browser.Driver.FindElement(Locator).Click();
+            Browser.Instance.Driver.FindElement(Locator).Click();
+        }
+
+        public bool IsDisplayed()
+        {
+            return Browser.Instance.Driver.FindElement(Locator).Displayed;
+        }
+
+        public bool IsEnabled()
+        {
+            return Browser.Instance.Driver.FindElement(Locator).Enabled;
         }
     }
 }
