@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<RunSettings>
+	<TestRunParameters>
+		<Parameter name="AddRemoveUrl" value="http://the-internet.herokuapp.com/add_remove_elements/"/>
+		<Parameter name="CheckboxesUrl" value="http://the-internet.herokuapp.com/checkboxes"/>
+		<Parameter name="DropdownUrl" value="http://the-internet.herokuapp.com/dropdown"/>
+		<Parameter name="HoversUrl" value="http://the-internet.herokuapp.com/hovers"/>
+		<Parameter name="InputsUrl" value="http://the-internet.herokuapp.com/inputs"/>
+		<Parameter name="SortableDataTablesUrl" value="http://the-internet.herokuapp.com/tables"/>
+		<Parameter name="TyposUrl" value="http://the-internet.herokuapp.com/typos"/>
+		<Parameter name="NotificationMessagesUrl" value="http://the-internet.herokuapp.com/notification_message_rendered"/>
+	</TestRunParameters>
+</RunSettings>
