@@ -70,20 +70,14 @@ namespace SharelaneAutomation.Pages
             return this;
         }
 
-        public void ClickRegisterButton()
-        {
+        public void ClickRegisterButton() =>
             Browser.Instance.Driver.FindElement(registerButtonLocator).Click();
-        }
 
-        public bool CheckFirstNameInputPresented()
-        {
-            return Browser.Instance.Driver.FindElement(firstNameInputLocator).Displayed;
-        }
+        public bool CheckFirstNameInputPresented() =>
+            Browser.Instance.Driver.FindElement(firstNameInputLocator).Displayed;
 
-        public bool CheckErrorMassageIsCorrect()
-        {
-            return CheckErrorMassageIsCorrect(
+        public bool CheckErrorMassageIsCorrect() =>
+            CheckErrorMassageIsCorrect(
                 "Oops, error on page. Some of your fields have invalid data or email was previously used");
-        }
     }
 }

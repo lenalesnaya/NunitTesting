@@ -30,9 +30,7 @@ namespace SharelaneAutomation.Models.Utilities
             string lastName,
             string email,
             string password,
-            string? zipCode = null)
-        {
-            return new User()
+            string? zipCode = null) => new()
             {
                 FirstName = firstName,
                 LastName = lastName,
@@ -40,6 +38,5 @@ namespace SharelaneAutomation.Models.Utilities
                 Password = password,
                 ZipCode = zipCode
             };
-        }
     }
 }

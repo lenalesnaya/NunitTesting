@@ -47,7 +47,6 @@ namespace SharelaneAutomation.Tests
         public void Login_WithInvalidPassword_CheckErrorMessage()
         {
             LoginSteps.TryToLogin(wrongPassword: "");
-
             Assert.Multiple(() =>
             {
                 Assert.That(MainPage.CheckErrorMassagePresented());

@@ -31,26 +31,18 @@ namespace SharelaneAutomation.Pages
             return this;
         }
 
-        public bool CheckBookHrefPresented()
-        {
-            return Browser.Instance.Driver.FindElement(hrefBookLocator).Displayed;
-        }
+        public bool CheckBookHrefPresented() =>
+            Browser.Instance.Driver.FindElement(hrefBookLocator).Displayed;
 
-        public bool CheckLogoutHrefPresented()
-        {
-            return Browser.Instance.Driver.FindElement(hrefLogoutLocator).Displayed;
-        }
+        public bool CheckLogoutHrefPresented() =>
+            Browser.Instance.Driver.FindElement(hrefLogoutLocator).Displayed;
 
-        public bool CheckHelloUserPresented()
-        {
-            return Browser.Instance.Driver.FindElement(helloUserLocator).Displayed;
-        }
+        public bool CheckHelloUserPresented() =>
+            Browser.Instance.Driver.FindElement(helloUserLocator).Displayed;
 
-        public bool CheckErrorMassageIsCorrect()
-        {
-            return CheckErrorMassageIsCorrect(
+        public bool CheckErrorMassageIsCorrect() =>
+            CheckErrorMassageIsCorrect(
                 "Oops, error. Email and/or password don't match our records");
-        }
 
         public MainPage TryToLogin(string email, string password)
         {
@@ -79,10 +71,8 @@ namespace SharelaneAutomation.Pages
             return this;
         }
 
-        public void ClickLoginButton()
-        {
+        public void ClickLoginButton() =>
             Browser.Instance.Driver.FindElement(loginButtonLocator).Click();
-        }
 
         public MainPage ClickLogo()
         {

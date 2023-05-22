@@ -49,30 +49,21 @@ namespace Core.Selenium
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
-        public void NavigateToUrl(string url)
-        {
+        public void NavigateToUrl(string url) =>
             Driver.Navigate().GoToUrl(url);
-        }
 
-        public void ContextClickToElement(IWebElement element)
-        {
+        public void ContextClickToElement(IWebElement element) =>
             new Actions(Driver)
               .MoveToElement(element)
               .ContextClick()
               .Build()
               .Perform();
-        }
 
-        public void ContextClickToElement(By by)
-        {
-            var element = Driver.FindElement(by);
-            ContextClickToElement(element);
-        }
+        public void ContextClickToElement(By by) =>
+            ContextClickToElement(Driver.FindElement(by));
 
-        public void AcceptAlert()
-        {
+        public void AcceptAlert() =>
             Driver.SwitchTo().Alert().Accept();
-        }
 
         public object? ExecuteScript(string script)
         {
@@ -86,10 +77,8 @@ namespace Core.Selenium
             }
         }
 
-        public void SwitchToFirstWindow()
-        {
+        public void SwitchToFirstWindow() =>
             Driver.SwitchTo().Window(Driver.WindowHandles[0]);
-        }
 
         public void SwitchToLastWindow()
         {
@@ -100,10 +89,8 @@ namespace Core.Selenium
             }
         }
 
-        public void CloseTab()
-        {
+        public void CloseTab() =>
             Driver.Close();
-        }
 
         public void CloseBrowser()
         {

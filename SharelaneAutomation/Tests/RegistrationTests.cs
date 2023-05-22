@@ -50,154 +50,104 @@ namespace SharelaneAutomation.Tests
 
         [Test, Category("Positive"), Description
             ("Registration with valid credentials check (empty last name field)")]
-        public void Register_WithValidCredentials_EmptyLastNameField()
-        {
+        public void Register_WithValidCredentials_EmptyLastNameField() =>
             CheckCorrectLastNameValidation(string.Empty);
-        }
 
         [Test, Category("Positive"), Description("Registration with email alphanumeric value check")]
-        public void Register_WithEmailAlphaNumericValue()
-        {
+        public void Register_WithEmailAlphaNumericValue() =>
             CheckCorrectEmailValidation(RegistrationValues.EmailAlphaNumericValue);
-        }
 
         [Test, Category("Positive"), Description("Registration with email alphabetic value check")]
-        public void Register_WithEmailAlphabeticValue()
-        {
+        public void Register_WithEmailAlphabeticValue() =>
             CheckCorrectEmailValidation(RegistrationValues.EmailLowAlphabeticValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with first name min limit value check")]
-        public void Register_WithFirstNameMinLimitValue()
-        {
+        public void Register_WithFirstNameMinLimitValue() =>
             CheckCorrectFirstNameValidation(RegistrationValues.FirstAndLastNameMinLimitValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with first name max limit value check")]
-        public void Register_WithFirstNameMaxLimitValue()
-        {
+        public void Register_WithFirstNameMaxLimitValue() =>
             CheckCorrectFirstNameValidation(RegistrationValues.FirstAndLastNameMaxLimitValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with last name min limit value check")]
-        public void Register_WithLastNameMinLimitValue()
-        {
+        public void Register_WithLastNameMinLimitValue() =>
             CheckCorrectLastNameValidation(RegistrationValues.FirstAndLastNameMinLimitValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with last name max limit value check")]
-        public void Register_WithLastNameMaxLimitValues()
-        {
+        public void Register_WithLastNameMaxLimitValues() =>
             CheckCorrectLastNameValidation(RegistrationValues.FirstAndLastNameMaxLimitValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with email max limit value check")]
-        public void Register_WithEmailMaxLimitValue()
-        {
+        public void Register_WithEmailMaxLimitValue() =>
             CheckCorrectEmailValidation(RegistrationValues.EmailMaxLimitValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with password min limit value check")]
-        public void Register_WithPasswordMinLimitValue()
-        {
+        public void Register_WithPasswordMinLimitValue() =>
             CheckCorrectPasswordValidation(RegistrationValues.PasswordMinLimitValue);
-        }
 
         [Test, Category("LimitValues"), Description("Registration with password max limit value check")]
-        public void Register_WithPasswordMaxLimitValue()
-        {
+        public void Register_WithPasswordMaxLimitValue() =>
             CheckCorrectPasswordValidation(RegistrationValues.PasswordMaxLimitValue);
-        }
 
         [Test, Category("Negative"), Description("Incorrect zip code validation check (underlimit value).")]
-        public void Register_ValidateUnderlimitValueZipCode_CheckErrorMessage()
-        {
+        public void Register_ValidateUnderlimitValueZipCode_CheckErrorMessage() =>
             CheckIncorrectZipCodeValidation(RegistrationValues.ZipCodeUnderlimitValue);
-        }
 
         [Test, Category("Negative"), Description("Incorrect zip code validation check (empty string value).")]
-        public void Register_ValidateEmptyStringValueZipCode_CheckErrorMessage()
-        {
+        public void Register_ValidateEmptyStringValueZipCode_CheckErrorMessage() =>
             CheckIncorrectZipCodeValidation(RegistrationValues.EmptyStringValue);
-        }
 
         [Test, Category("Negative"), Description("Incorrect zip code validation check (overlimit value).")]
-        public void Register_ValidateOverlimitValueZipCode_CheckErrorMessage()
-        {
+        public void Register_ValidateOverlimitValueZipCode_CheckErrorMessage() =>
             CheckIncorrectZipCodeValidation(RegistrationValues.ZipCodeOverlimitValue);
-        }
 
         [Test, Category("Negative"), Description("Incorrect zip code validation check (incorrect symbols).")]
-        public void Register_ValidateIncorrectSymbolsValueZipCode_CheckErrorMessage()
-        {
+        public void Register_ValidateIncorrectSymbolsValueZipCode_CheckErrorMessage() =>
             CheckIncorrectZipCodeValidation(RegistrationValues.ZipCodeIncorrectSymbolsValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid first name check (empty string value).")]
-        public void Register_WithEmptyStringValueFirstName_CheckErrorMessage()
-        {
+        public void Register_WithEmptyStringValueFirstName_CheckErrorMessage() =>
             CheckIncorrectFirstNameValidation(RegistrationValues.EmptyStringValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid first name check (cyrillic value).")]
-        public void Register_WithCyrillicValueFirstName_CheckErrorMessage()
-        {
+        public void Register_WithCyrillicValueFirstName_CheckErrorMessage() =>
             CheckIncorrectFirstNameValidation(RegistrationValues.CyrillicValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid first name check (alphanumeric value).")]
-        public void Register_WithAlphaNumericValueFirstName_CheckErrorMessage()
-        {
+        public void Register_WithAlphaNumericValueFirstName_CheckErrorMessage() =>
             CheckIncorrectFirstNameValidation(RegistrationValues.AlphaNumericValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid first name check (containing a space value).")]
-        public void Register_WithContainingSpaceValueFirstName_CheckErrorMessage()
-        {
+        public void Register_WithContainingSpaceValueFirstName_CheckErrorMessage() =>
             CheckIncorrectFirstNameValidation(RegistrationValues.AlphabeticSpaceValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid first name check (alphabitic with special symbols value).")]
-        public void Register_WithContainingSpecialSymbolsValueFirstName_CheckErrorMessage()
-        {
+        public void Register_WithContainingSpecialSymbolsValueFirstName_CheckErrorMessage() =>
             CheckIncorrectFirstNameValidation(RegistrationValues.AlphaSpecialSymbolsValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid first name check (overlimit value).")]
-        public void Register_WithOverlimitValueFirstName_CheckErrorMessage()
-        {
+        public void Register_WithOverlimitValueFirstName_CheckErrorMessage() =>
             CheckIncorrectFirstNameValidation(RegistrationValues.FirstAndLastNameOverlimitValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid last name check (cyrillic value).")]
-        public void Register_WithCyrillicValueLastName_CheckErrorMessage()
-        {
+        public void Register_WithCyrillicValueLastName_CheckErrorMessage() =>
             CheckIncorrectLastNameValidation(RegistrationValues.CyrillicValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid last name check (alphanumeric value).")]
-        public void Register_WithAlphaNumericValueLastName_CheckErrorMessage()
-        {
+        public void Register_WithAlphaNumericValueLastName_CheckErrorMessage() =>
             CheckIncorrectLastNameValidation(RegistrationValues.AlphaNumericValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid last name check (containing a space value).")]
-        public void Register_WithContainingSpaceValueLastName_CheckErrorMessage()
-        {
+        public void Register_WithContainingSpaceValueLastName_CheckErrorMessage() =>
             CheckIncorrectLastNameValidation(RegistrationValues.AlphabeticSpaceValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid last name check (containing spacial symbols value).")]
-        public void Register_WithContainingSpecialSymbolsValueLastName_CheckErrorMessage()
-        {
+        public void Register_WithContainingSpecialSymbolsValueLastName_CheckErrorMessage() =>
             CheckIncorrectLastNameValidation(RegistrationValues.AlphaSpecialSymbolsValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid last name check (overlimit value).")]
-        public void Register_WithOverlimitValueLastName_CheckErrorMessage()
-        {
+        public void Register_WithOverlimitValueLastName_CheckErrorMessage() =>
             CheckIncorrectLastNameValidation(RegistrationValues.FirstAndLastNameOverlimitValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with non-unique email check")]
         public void Register_WithNonUniqueEmail_CheckErrorMessage()
@@ -217,109 +167,77 @@ namespace SharelaneAutomation.Tests
         }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (cyrillic value).")]
-        public void Register_WithCyrillicValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithCyrillicValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailCyrillicValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (upper alphabetic value).")]
-        public void Register_WithUpperAlphabeticValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithUpperAlphabeticValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailUpAlphabeticValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (value without dot).")]
-        public void Register_WithValueWithoutDotEmail_CheckErrorMessage()
-        {
+        public void Register_WithValueWithoutDotEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailWithoutDotValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (without doggy value)")]
-        public void Register_WithValueWithoutDoggyEmail_CheckErrorMessage()
-        {
+        public void Register_WithValueWithoutDoggyEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailWithoutDoggyValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (with two doggy value)")]
-        public void Register_WithTwoDoggyValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithTwoDoggyValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailWithTwoDoggyValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (value with space).")]
-        public void Register_WithContainingSpaceValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithContainingSpaceValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailWithSpaceValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (just doggy and dot value).")]
-        public void Register_WithDoggyAndDotValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithDoggyAndDotValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailDoggyAndDotValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (empty string value).")]
-        public void Register_WithEmptyStringValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithEmptyStringValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmptyStringValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid email check (overlimit value).")]
-        public void Register_WithOverlimitValueEmail_CheckErrorMessage()
-        {
+        public void Register_WithOverlimitValueEmail_CheckErrorMessage() =>
             CheckIncorrectEmailValidation(RegistrationValues.EmailOverlimitValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid password check (empty string value).")]
-        public void Register_WithEmptyStringValuePassword_CheckErrorMessage()
-        {
+        public void Register_WithEmptyStringValuePassword_CheckErrorMessage() =>
             CheckIncorrectPasswordValidation(RegistrationValues.EmptyStringValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid password check (underlimit value).")]
-        public void Register_WithUnderLimitValuePassword_CheckErrorMessage()
-        {
+        public void Register_WithUnderLimitValuePassword_CheckErrorMessage() =>
             CheckIncorrectPasswordValidation(RegistrationValues.PasswordUnderLimitValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid password check (value with space).")]
-        public void Register_WithContainingSpaceValuePassword_CheckErrorMessage()
-        {
+        public void Register_WithContainingSpaceValuePassword_CheckErrorMessage() =>
             CheckIncorrectPasswordValidation(RegistrationValues.PasswordWithSpaceValue);
-        }
 
         [Test, Category("Negative"), Description("Registration with invalid password check (overlimit value).")]
-        public void Register_WithOverlimitValuePassword_CheckErrorMessage()
-        {
+        public void Register_WithOverlimitValuePassword_CheckErrorMessage() =>
             CheckIncorrectPasswordValidation(RegistrationValues.PasswordOverlimitValue);
-        }
 
         [Test, Category("Negative"), Description(
             "Registration with invalid password confirmation check (password is empty, password confirmation is filled).")]
-        public void Register_WithEmptyPasswordAndFilledPasswordConfirmation_CheckErrorMessage()
-        {
+        public void Register_WithEmptyPasswordAndFilledPasswordConfirmation_CheckErrorMessage() =>
             CheckIncorrectPasswordConfirmationValidation(
             RegistrationValues.EmptyStringValue,
             UserBuilder.StandartUser.Password!);
-        }
 
         [Test, Category("Negative"), Description(
             "Registration with invalid password confirmation check (password is filled, password confirmation is empty).")]
-        public void Register_WithFilledPasswordAndEmptyPasswordConfirmation_CheckErrorMessage()
-        {
+        public void Register_WithFilledPasswordAndEmptyPasswordConfirmation_CheckErrorMessage() =>
             CheckIncorrectPasswordConfirmationValidation(
             UserBuilder.StandartUser.Password!,
             RegistrationValues.EmptyStringValue);
-        }
 
         [Test, Category("Negative"), Description(
             "Registration with invalid password confirmation check (password and password confirmation is different).")]
-        public void Register_WithDifferentPasswordAndConfirmation_CheckErrorMessage()
-        {
+        public void Register_WithDifferentPasswordAndConfirmation_CheckErrorMessage() =>
             CheckIncorrectPasswordConfirmationValidation(
             UserBuilder.StandartUser.Password!,
             RegistrationValues.PasswordConfirmationRandomValue);
-        }
 
         private void CheckCorrectFirstNameValidation(string firstName)
         {

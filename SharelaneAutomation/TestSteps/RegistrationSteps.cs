@@ -7,19 +7,13 @@ namespace SharelaneAutomation.TestSteps
 {
     internal class RegistrationSteps : BaseStep
     {
-        internal RegistrationPage ValidateCorrectZipCode()
-        {
-            return MainPage.ClickSignUpLink().ValidateZipCode(UserBuilder.StandartUser.ZipCode!);
-        }
+        internal RegistrationPage ValidateCorrectZipCode() =>
+            MainPage.ClickSignUpLink().ValidateZipCode(UserBuilder.StandartUser.ZipCode!);
 
-        internal RegistrationConfirmationPage Register(User? user = null)
-        {
-            return ValidateCorrectZipCode().Register(user ?? UserBuilder.StandartUser);
-        }
+        internal RegistrationConfirmationPage Register(User? user = null) =>
+            ValidateCorrectZipCode().Register(user ?? UserBuilder.StandartUser);
 
-        internal RegistrationPage TryToRegister(User user, string? confirmPassword = null)
-        {
-            return ValidateCorrectZipCode().TryToRegister(user, confirmPassword);
-        }
+        internal RegistrationPage TryToRegister(User user, string? confirmPassword = null) =>
+            ValidateCorrectZipCode().TryToRegister(user, confirmPassword);
     }
 }

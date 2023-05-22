@@ -8,15 +8,12 @@ namespace Core.Configurations
         public static BrowserConfiguration Browser => BindConfiguration<BrowserConfiguration>();
         public static string CurrentDirectory => Directory.GetCurrentDirectory();
 
-        public static string GetValue(string key)
-        {
-            return ConfigurationRoot[key]!;
-        }
+        public static string GetValue(string key) =>
+            ConfigurationRoot[key]!;
 
         public static string GetDirectory(string key)
         {
             string directoryRelativePath = GetValue(key).Replace("/", Path.DirectorySeparatorChar.ToString());
-
             return GetRootPath(directoryRelativePath);
         }
 

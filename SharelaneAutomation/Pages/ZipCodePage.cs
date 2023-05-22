@@ -35,19 +35,13 @@ namespace SharelaneAutomation.Pages
             return this;
         }
 
-        public void ClickContinueButton()
-        {
+        public void ClickContinueButton() =>
             Browser.Instance.Driver.FindElement(registerButtonLocator).Click();
-        }
 
-        public bool CheckZipCodeInputPresented()
-        {
-            return Browser.Instance.Driver.FindElement(zipCodeInputLocator).Displayed;
-        }
+        public bool CheckZipCodeInputPresented() =>
+            Browser.Instance.Driver.FindElement(zipCodeInputLocator).Displayed;
 
-        public bool CheckErrorMassageIsCorrect()
-        {
-            return CheckErrorMassageIsCorrect("Oops, error on page. ZIP code should have 5 digits");
-        }
+        public bool CheckErrorMassageIsCorrect() =>
+            CheckErrorMassageIsCorrect("Oops, error on page. ZIP code should have 5 digits");
     }
 }

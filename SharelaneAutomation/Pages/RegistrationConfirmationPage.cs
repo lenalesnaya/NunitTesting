@@ -18,19 +18,13 @@ namespace SharelaneAutomation.Pages
             return new MainPage();
         }
 
-        public string GetEmailString()
-        {
-            return Browser.Instance.Driver.FindElement(emailStringLocator).Text;
-        }
+        public string GetEmailString() =>
+            Browser.Instance.Driver.FindElement(emailStringLocator).Text;
 
-        public string GetPasswordString()
-        {
-            return Browser.Instance.Driver.FindElement(passwordStringLocator).Text;
-        }
+        public string GetPasswordString() =>
+            Browser.Instance.Driver.FindElement(passwordStringLocator).Text;
 
-        public bool CheckConfirmationMassageIsCorrect()
-        {
-            return CheckConfirmationMassageIsCorrect("Account is created!");
-        }
+        public bool CheckConfirmationMassageIsCorrect() =>
+            CheckConfirmationMassageIsCorrect("Account is created!");
     }
 }

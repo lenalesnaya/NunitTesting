@@ -13,24 +13,16 @@ namespace SharelaneAutomation.Pages.Abstractions
         public readonly By confirmationMessageLocator = By.ClassName("confirmation_message");
         public readonly By errorMessageLocator = By.ClassName("error_message");
 
-        public bool CheckErrorMassagePresented()
-        {
-            return Browser.Instance.Driver.FindElement(errorMessageLocator).Displayed;
-        }
+        public bool CheckErrorMassagePresented() =>
+            Browser.Instance.Driver.FindElement(errorMessageLocator).Displayed;
 
-        public bool CheckConfirmationMessagePresented()
-        {
-            return Browser.Instance.Driver.FindElement(confirmationMessageLocator).Displayed;
-        }
+        public bool CheckConfirmationMessagePresented() =>
+            Browser.Instance.Driver.FindElement(confirmationMessageLocator).Displayed;
 
-        public bool CheckErrorMassageIsCorrect(string message)
-        {
-            return Browser.Instance.Driver.FindElement(errorMessageLocator).Text.Equals(message);
-        }
+        public bool CheckErrorMassageIsCorrect(string message) =>
+            Browser.Instance.Driver.FindElement(errorMessageLocator).Text.Equals(message);
 
-        public bool CheckConfirmationMassageIsCorrect(string message)
-        {
-            return Browser.Instance.Driver.FindElement(confirmationMessageLocator).Text.Equals(message);
-        }
+        public bool CheckConfirmationMassageIsCorrect(string message) =>
+            Browser.Instance.Driver.FindElement(confirmationMessageLocator).Text.Equals(message);
     }
 }
