@@ -1,10 +1,12 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalcTesting", "CalcTesting\CalcTesting.csproj", "{A6F24FD8-7585-44E0-B0E3-08F8F2E9FF47}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharelaneAutomation", "SharelaneAutomation\SharelaneAutomation.csproj", "{EBA28802-7981-4DCF-BD91-AF972BADDF63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{571684F9-501E-4DEA-AF28-AA634791AAAA}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTesting", "SeleniumTesting\SeleniumTesting.csproj", "{51D31EE0-A3B1-4577-9D83-CBD00AA29D51}"
 EndProject
 Global
@@ -17,6 +19,14 @@ Global
 		{A6F24FD8-7585-44E0-B0E3-08F8F2E9FF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F24FD8-7585-44E0-B0E3-08F8F2E9FF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F24FD8-7585-44E0-B0E3-08F8F2E9FF47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA28802-7981-4DCF-BD91-AF972BADDF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA28802-7981-4DCF-BD91-AF972BADDF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA28802-7981-4DCF-BD91-AF972BADDF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA28802-7981-4DCF-BD91-AF972BADDF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571684F9-501E-4DEA-AF28-AA634791AAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571684F9-501E-4DEA-AF28-AA634791AAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571684F9-501E-4DEA-AF28-AA634791AAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571684F9-501E-4DEA-AF28-AA634791AAAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{51D31EE0-A3B1-4577-9D83-CBD00AA29D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51D31EE0-A3B1-4577-9D83-CBD00AA29D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51D31EE0-A3B1-4577-9D83-CBD00AA29D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
